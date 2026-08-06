@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Comparison History</title>
+
+<style>
+
+body {
+    font-family: Arial;
+    width:900px;
+    margin:40px auto;
+}
+
+.card {
+    background:#f4f4f4;
+    padding:20px;
+    margin:20px 0;
+    border-radius:8px;
+}
+
+button {
+    background:#FF9900;
+    border:none;
+    padding:10px 20px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>
+📊 Comparison History
+</h1>
+
+
+<a href="/">
+🏠 Home
+</a>
+
+<hr>
+
+
+{% for item in comparisons %}
+
+
+<div class="card">
+
+
+<h3>
+Comparison ID:
+</h3>
+
+<p>
+{{ item.comparison_id }}
+</p>
+
+
+<h3>
+Documents:
+</h3>
+
+
+<ul>
+
+{% for doc in item.documents %}
+
+<li>
+{{ doc }}
+</li>
+
+{% endfor %}
+
+</ul>
+
+
+<p>
+Created:
+{{ item.created }}
+</p>
+
+
+<h3>
+Questions Asked:
+</h3>
+
+<p>
+{{ item.questions|length }}
+</p>
+
+
+{% if item.questions %}
+
+<h3>
+Latest Question:
+</h3>
+
+<p>
+{{ item.questions[-1].question }}
+</p>
+
+{% endif %}
+
+
+<a href="/comparison/{{ item.comparison_id }}">
+<button>
+View Full Comparison
+</button>
+</a>
+
+
+</div>
+
+
+{% endfor %}
+
+
+</body>
+
+</html>

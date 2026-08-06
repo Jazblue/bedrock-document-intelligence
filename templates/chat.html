@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Document Chat</title>
+
+<style>
+
+body {
+    font-family: Arial;
+    width:900px;
+    margin:40px auto;
+}
+
+.box {
+    background:#f4f4f4;
+    padding:20px;
+    border-radius:8px;
+}
+
+button {
+    background:#FF9900;
+    border:none;
+    padding:10px 20px;
+    cursor:pointer;
+}
+
+input {
+    width:70%;
+    padding:10px;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<h1>
+🤖 Document Chat
+</h1>
+
+
+<div class="box">
+
+
+<h3>
+Document:
+{{ document_id }}
+</h3>
+
+
+<form method="POST">
+
+
+<input
+type="text"
+name="question"
+placeholder="Ask a question about this document"
+required
+>
+
+
+<button type="submit">
+Ask
+</button>
+
+
+</form>
+
+
+
+{% if answer %}
+
+<hr>
+
+<h3>
+AI Answer
+</h3>
+
+
+<p>
+{{ answer }}
+</p>
+
+
+{% endif %}
+
+
+</div>
+
+
+</body>
+
+</html>

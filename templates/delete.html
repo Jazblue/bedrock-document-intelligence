@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Delete Document</title>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    width: 700px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+
+.card {
+
+    background: #f4f4f4;
+    padding: 30px;
+    border-radius: 10px;
+
+}
+
+
+h1 {
+
+    color: #232F3E;
+
+}
+
+
+button {
+
+    padding: 12px 25px;
+    margin: 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+
+}
+
+
+.delete {
+
+    background: #d9534f;
+    color: white;
+
+}
+
+
+.cancel {
+
+    background: #cccccc;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+
+<h1>
+Delete Document
+</h1>
+
+
+<p>
+Are you sure you want to permanently delete:
+</p>
+
+
+<h2>
+{{ document_id }}
+</h2>
+
+
+<p>
+This will remove:
+</p>
+
+
+<ul style="text-align:left; display:inline-block;">
+
+<li>S3 document file</li>
+<li>Document analysis result</li>
+<li>Chat history</li>
+
+</ul>
+
+
+<br>
+
+
+<form action="/delete/{{ document_id }}" method="POST">
+
+
+<button class="delete" type="submit">
+
+🗑 Delete Permanently
+
+</button>
+
+
+<a href="/documents">
+
+<button class="cancel" type="button">
+
+Cancel
+
+</button>
+
+</a>
+
+
+</form>
+
+
+</div>
+
+
+</body>
+
+</html>

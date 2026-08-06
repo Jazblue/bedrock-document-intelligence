@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Comparison Answer</title>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    width:900px;
+    margin:40px auto;
+}
+
+
+nav a {
+    text-decoration:none;
+    margin-right:15px;
+    font-weight:bold;
+    color:#232F3E;
+}
+
+
+.card {
+
+    background:#f4f4f4;
+    padding:25px;
+    margin-top:20px;
+    border-radius:8px;
+
+}
+
+
+.answer {
+
+    white-space:pre-wrap;
+    line-height:1.6;
+
+}
+
+
+button {
+
+    background:#FF9900;
+    border:none;
+    padding:12px 20px;
+    cursor:pointer;
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+<a href="/">🏠 Home</a> |
+<a href="/documents">📄 Documents</a> |
+<a href="/history">📜 History</a>
+
+</nav>
+
+
+<hr>
+
+
+<h1>
+🤖 Comparison Question Answer
+</h1>
+
+
+<div class="card">
+
+<h3>
+Your Question:
+</h3>
+
+<p>
+{{ question }}
+</p>
+
+
+<h3>
+AI Answer:
+</h3>
+
+<div class="answer">
+
+<div class="answer">
+
+{{ answer | replace("**", "") | replace("###", "") }}
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<br>
+
+
+<a href="/documents">
+
+<button>
+Back to Documents
+</button>
+
+</a>
+
+
+</body>
+
+</html>

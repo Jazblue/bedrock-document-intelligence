@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Document Comparison</title>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+}
+
+
+nav a {
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+    color: #232F3E;
+}
+
+
+h1 {
+    color: #232F3E;
+}
+
+
+.card {
+
+    background:#f4f4f4;
+    padding:25px;
+    margin-top:20px;
+    border-radius:8px;
+
+}
+
+
+.comparison {
+
+    white-space:pre-wrap;
+    line-height:1.6;
+    font-size:16px;
+
+}
+
+
+.question-box {
+
+    background:#232F3E;
+    color:white;
+    padding:20px;
+    margin-top:25px;
+    border-radius:8px;
+
+}
+
+
+input[type="text"] {
+
+    width:80%;
+    padding:12px;
+    margin-top:10px;
+    font-size:16px;
+
+}
+
+
+button {
+
+    background:#FF9900;
+    border:none;
+    padding:12px 20px;
+    margin-top:10px;
+    cursor:pointer;
+
+}
+
+
+.example {
+
+    background:white;
+    color:#232F3E;
+    padding:10px;
+    border-radius:5px;
+    margin-top:10px;
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+<a href="/">🏠 Home</a> |
+<a href="/documents">📄 Documents</a> |
+<a href="/history">📜 History</a>
+<a href="/comparison_history">
+📊 Comparison History
+</a>
+
+
+</nav>
+
+
+<hr>
+
+
+<h1>
+🔍 Document Comparison
+</h1>
+
+
+
+<div class="card">
+
+<h2>
+Comparison Result
+</h2>
+
+
+<div class="comparison">
+
+{{ comparison }}
+
+</div>
+
+</div>
+
+
+
+
+{% if history %}
+
+<div class="card">
+
+<h2>
+💬 Question History
+</h2>
+
+
+{% for item in history %}
+
+
+<div style="margin-bottom:25px;">
+
+
+<b>
+You asked:
+</b>
+
+<p>
+{{ item.question }}
+</p>
+
+
+
+<b>
+AI Answer:
+</b>
+
+<p class="comparison">
+{{ item.answer }}
+</p>
+
+
+<hr>
+
+
+</div>
+
+
+{% endfor %}
+
+
+</div>
+
+{% endif %}
+
+
+
+
+<div class="question-box">
+
+
+<h2>
+Ask about this comparison
+</h2>
+
+
+<p>
+Ask another question to help make a decision.
+</p>
+
+
+
+<form action="/compare_question" method="POST">
+
+
+<input
+type="text"
+name="question"
+placeholder="Example: Who is more suitable for the roofing role?"
+required
+>
+
+
+<br>
+
+
+<button type="submit">
+Ask AI
+</button>
+
+
+</form>
+
+
+
+
+<div class="example">
+
+<b>
+Suggested questions:
+</b>
+
+
+<ul>
+
+<li>
+Who is the strongest candidate overall?
+</li>
+
+<li>
+Who is more suitable for the roofing role?
+</li>
+
+<li>
+Who has the strongest experience?
+</li>
+
+<li>
+What are the risks of choosing each person?
+</li>
+
+<li>
+What interview questions should I ask?
+</li>
+
+
+</ul>
+
+
+</div>
+
+
+</div>
+
+
+
+
+</body>
+
+</html>

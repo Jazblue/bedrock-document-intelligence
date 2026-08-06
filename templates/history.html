@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Document History</title>
+
+<style>
+
+body {
+    font-family: Arial;
+    width:900px;
+    margin:40px auto;
+}
+
+.card {
+    background:#f4f4f4;
+    padding:20px;
+    margin:15px 0;
+    border-radius:8px;
+}
+
+h1 {
+    color:#232F3E;
+}
+
+.back {
+    margin-bottom:20px;
+}
+
+a {
+    color:#0066cc;
+    text-decoration:none;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<nav>
+
+<a href="/">🏠 Home</a> |
+<a href="/documents">📄 Documents</a> |
+<a href="/history">📜 History</a>
+
+</nav>
+
+<hr>
+
+<h1>
+🤖 AWS Bedrock Intelligent Document Agent
+</h1>
+
+<h1>
+📄 Document History
+</h1>
+
+
+<div class="back">
+<a href="/">⬅ Back to Upload</a>
+</div>
+
+
+
+{% for item in results %}
+
+
+<div class="card">
+
+
+<h3>
+{{ item.document_id }}
+</h3>
+
+
+<p>
+<b>Type:</b> {{ item.document_type }}
+</p>
+
+
+<p>
+<b>Action:</b> {{ item.action }}
+</p>
+
+
+<p>
+<b>Processed:</b> {{ item.processed_time }}
+</p>
+
+
+</div>
+
+
+{% endfor %}
+
+
+
+</body>
+
+</html>

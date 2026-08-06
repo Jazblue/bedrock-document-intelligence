@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AWS Bedrock Intelligent Document Agent</title>
+
+
+<style>
+
+body {
+
+    font-family: Arial, sans-serif;
+    width: 900px;
+    margin: 40px auto;
+    background: #ffffff;
+
+}
+
+
+nav {
+
+    margin-bottom:20px;
+
+}
+
+
+nav a {
+
+    text-decoration:none;
+    color:#232F3E;
+    font-weight:bold;
+    margin-right:15px;
+
+}
+
+
+nav a:hover {
+
+    color:#FF9900;
+
+}
+
+
+h1 {
+
+    color:#232F3E;
+
+}
+
+
+
+.card {
+
+    background:#f4f4f4;
+    padding:25px;
+    margin-top:20px;
+    border-radius:10px;
+
+}
+
+
+
+.upload-box,
+.chat-box {
+
+    border:2px dashed #999;
+
+}
+
+
+
+.analysis {
+
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    line-height:1.7;
+
+}
+
+
+
+.analysis-section {
+
+    margin-bottom:25px;
+    padding-bottom:15px;
+    border-bottom:1px solid #ddd;
+    white-space:pre-wrap;
+
+}
+
+
+
+input,
+select {
+
+    display:block;
+    width:80%;
+    padding:12px;
+    margin:15px 0;
+    font-size:16px;
+
+}
+
+
+
+button {
+
+    background:#FF9900;
+    border:none;
+    padding:12px 25px;
+    cursor:pointer;
+    font-size:16px;
+    border-radius:5px;
+
+}
+
+
+button:hover {
+
+    background:#e88b00;
+
+}
+
+
+
+.label {
+
+    font-weight:bold;
+    color:#232F3E;
+
+}
+
+
+
+.answer {
+
+    background:#e8f4ff;
+
+}
+
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<nav>
+
+<a href="/">🏠 Home</a> |
+<a href="/documents">📄 Documents</a> |
+<a href="/history">📜 History</a>
+
+</nav>
+
+
+<hr>
+
+
+
+<h1>
+AWS Bedrock Intelligent Document Agent
+</h1>
+
+
+<p>
+Upload PDFs, analyse documents and ask questions using Amazon Bedrock.
+</p>
+
+
+
+
+
+
+<div class="card upload-box">
+
+
+<h2>
+📤 Upload PDF Document
+</h2>
+
+
+
+<form method="POST" enctype="multipart/form-data">
+
+
+<input
+type="file"
+name="file"
+accept=".pdf"
+required
+>
+
+
+<button type="submit">
+
+Analyse Document
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+
+
+
+
+
+{% if result %}
+
+
+<div class="card">
+
+
+<h2>
+✅ Analysis Complete
+</h2>
+
+
+
+<p>
+
+<span class="label">
+Document Type:
+</span>
+
+{{ result.document_type }}
+
+</p>
+
+
+
+<p>
+
+<span class="label">
+Action:
+</span>
+
+{{ result.action }}
+
+</p>
+
+
+
+
+<h3>
+📄 Analysis Report
+</h3>
+
+
+
+
+<div class="analysis">
+
+
+
+{% set sections = result.data.split('\n\n') %}
+
+
+
+{% for section in sections %}
+
+
+<div class="analysis-section">
+
+{{ section | replace("**", "") }}
+
+</div>
+
+
+{% endfor %}
+
+
+
+</div>
+
+
+
+</div>
+
+
+{% endif %}
+
+
+
+
+
+
+
+<div class="card chat-box">
+
+
+<h2>
+💬 Ask About A Document
+</h2>
+
+
+
+<form method="POST">
+
+
+
+<label>
+Choose document:
+</label>
+
+
+
+
+<select name="document_id">
+
+
+{% for doc in documents %}
+
+
+<option value="{{ doc.document_id }}">
+
+{{ doc.document_id }}
+
+</option>
+
+
+{% endfor %}
+
+
+
+</select>
+
+
+
+
+
+<input
+
+type="text"
+
+name="question"
+
+placeholder="Example: What are the payment terms?"
+
+required
+
+>
+
+
+
+<button type="submit">
+
+Ask Bedrock
+
+</button>
+
+
+
+</form>
+
+
+</div>
+
+
+
+
+
+
+
+{% if answer %}
+
+
+<div class="card answer">
+
+
+<h2>
+🤖 AI Answer
+</h2>
+
+
+
+<p>
+
+{{ answer }}
+
+</p>
+
+
+</div>
+
+
+{% endif %}
+
+
+
+
+
+</body>
+
+</html>

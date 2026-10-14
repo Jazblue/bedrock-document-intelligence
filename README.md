@@ -2,6 +2,12 @@
 
 An AI-powered document analysis web application built with **Python, Flask, Amazon Bedrock, Amazon S3 and Amazon DynamoDB**. The project demonstrates how a document can be uploaded, stored, classified and analysed with a foundation model, with results available for later review.
 
+## Live demo: Apex Roofing
+
+Try the simplified roofing-focused document assistant: [**Open the Apex Roofing demo**](https://eu-west-2iwafbyl1b.auth.eu-west-2.amazoncognito.com/login?client_id=3ffjmnjvse6v0vsk6rfm43v614&redirect_uri=https%3A%2F%2Fapexroof.jasoncv.click%2F&response_type=code&scope=openid%20email).
+
+**Sign-in is required.** This is a separate, simpler deployed demo intended to give visitors a practical look at the interface; it should not be taken to mean every capability described in this repository is deployed in that demo.
+
 ## Project overview
 
 The application provides a browser-based workflow for working with PDF documents. It extracts text from a PDF, classifies the document, and routes it to a specialised invoice or contract workflow, or to a general document-analysis workflow. Users can ask questions about a selected document and compare multiple documents.
